@@ -1,0 +1,18 @@
+.homepage {
+    background-color: #3386FF;
+    color: white;
+    font-size: 18px;
+    height: 100%;
+    display: grid;
+    padding: 50px;
+    grid-template-areas: 
+        "play play . ."
+        "play play user user"
+        "diff diff diff diff"
+        ". score . about";
+    
+    
+
+
+
+}

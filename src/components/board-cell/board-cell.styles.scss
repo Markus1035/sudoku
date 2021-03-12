@@ -1,0 +1,17 @@
+.board-cell {
+
+
+    .pencil-matrix{
+        display: grid;
+        grid-template-areas: 
+            "1 2 3"
+            "4 5 6"
+            "7 8 9";
+    }
+
+    
+}
+
+.isSelected {
+    background-color: blue;
+}

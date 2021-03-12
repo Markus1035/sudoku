@@ -1,0 +1,12 @@
+.sudoku-game-options{
+    color: white;
+    display: grid;
+    grid-template-areas: 
+     "area1 area2 area3 area4 area5";
+
+     .pencil-is-on{
+         font-weight: 900;
+         color: #333;
+         background-color: white;
+     }
+}

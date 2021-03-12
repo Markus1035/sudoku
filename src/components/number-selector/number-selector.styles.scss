@@ -1,0 +1,26 @@
+.number-selector {
+    padding-top: 20px;
+    font-size: 12px;
+    color: white;
+    display: grid;
+    grid-template-areas: 
+        "Selector1 Selector2 Selector3 Selector4 Selector5"
+        "Selector6 Selector7 Selector8 Selector9 Selector0";
+
+    .number-option{
+        border:none;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        height: 30px;
+        width: 30px;
+        background-color: green;
+        border-radius: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .selected-number {
+        background-color: red;
+    }
+}
