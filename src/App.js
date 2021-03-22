@@ -18,7 +18,7 @@ import About from './pages/about/about.component';
 const App = () => {
     
     return (
-        <div className='app'>
+        <div className='app' >
 
         <Switch>
           <Route exact path='/' component={HomePage} />

@@ -1,16 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import './scores.styles.scss';
 
-const Scores = (scores) => (
+import BackButton from '../../components/back-button/back-button.component';
+
+const Scores = ({ scores }) => (
     <div className='scores'>
+        <BackButton />
         <div className='title'>
+            <span>#</span>
             <span>Date</span>
             <span>Time</span>            
             <span>Difficulty</span>            
         </div>
-        {scores.map((score) => (
+        {scores.map((score, index) => (
             <div key={score.key}>
+                <span>{index + 1}</span>
                 <span>{score.date}</span>
                 <span>{score.time}</span>
                 <span>{score.difficulty}</span>

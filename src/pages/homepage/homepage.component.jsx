@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { ReactComponent as PlayIcon } from '../../assets/play-icon.svg';
-import { ReactComponent as UserIcon } from '../../assets/user-icon.svg';
 import { ReactComponent as AboutIcon } from '../../assets/about-icon.svg';
 import { ReactComponent as ScoreIcon } from '../../assets/score-icon.svg';
 
@@ -18,7 +17,7 @@ import DifficultySelector from '../../components/difficultySelector/difficultySe
 import {newGame} from '../../redux/game/game.actions';
 
 import './homepage.styles.scss';
-import { userLogoStyles, scoreLogoStyles, aboutLogoStyles, playLogoStyles } from './homepage.styles'
+import { scoreLogoStyles, aboutLogoStyles, playLogoStyles } from './homepage.styles'
 
 const HomePage = ({newGame, history}) => (
     <div className= 'homepage'>
@@ -26,7 +25,6 @@ const HomePage = ({newGame, history}) => (
             newGame();
             history.push('/sudokugame');
             }} />
-        <UserIcon style={userLogoStyles} onClick={() => history.push('/profile-settings')} />
         <DifficultySelector />
         <ScoreIcon style={scoreLogoStyles} onClick={() => history.push('/scores')}  />
         <AboutIcon style={aboutLogoStyles} onClick={() => history.push('/about')} />

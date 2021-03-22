@@ -5,16 +5,19 @@ import { selectCell, updateCell, checkSolution } from '../../redux/game/game.act
 
 import BoardCell from '../board-cell/board-cell.component';
 
+
 import './sudoku-board.styles.scss';
 
 const SudokuBoard = ({puzzle, cellSelected, numberSelected, selectCell, updateCell, checkSolution}) => {
     const { timeInSeconds, currentPuzzle } = puzzle;
+    
     useEffect(() => {
         // console.log(timeInSeconds);
     }, [timeInSeconds] );
 
     const handleClick = cell => {
         selectCell(cell);
+
         if(numberSelected){
             updateCell(cell, numberSelected)
         }
@@ -33,31 +36,11 @@ const SudokuBoard = ({puzzle, cellSelected, numberSelected, selectCell, updateCe
                     isSelected={(cell === cellSelected) ? true : false}
                     handleClick={cell => handleClick(cell)}
                 />
-            ))}            
+            ))}
         </div>
-)}
+)};
 
-//code holder while testing a new version
-export const alternateBoard = ({puzzle, cellSelected, numberSelected, selectCell, updateCell}) => {
-    const { currentPuzzle } = puzzle;
-    return(
-    <div className='sudoku-board'>
-    {currentPuzzle.map((number, cell) => (
-        <div 
-            key={`cell-N${cell}`} 
-            className={`board-cell ${(cell === cellSelected) ? 'selected-cell': '' }`}
-            onClick={() => {
-                selectCell(cell);
-                if(numberSelected){
-                updateCell(cell, numberSelected)
-                }
-                }}
-            >
-            {number}
-        </div>
-    ))}            
-</div>
-)}
+
 
 const mapStatetoProps = ({game}) => {
     const {puzzles, currentDifficulty, cellSelected, numberSelected,invalidNumberArray} = game;

@@ -22,7 +22,7 @@ const difficultyMap = (difficulty) => {
 }
 
 const DifficultySelector = ({currentDifficulty, changeDifficulty}) => (
-    <div className='difficulty-selector'>
+    <div className='difficulty-selector' >
         <button onClick={() => {
             if(currentDifficulty > 1) {changeDifficulty(currentDifficulty - 1)}
         }} >{'\u003C'}</button>

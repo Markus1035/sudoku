@@ -5,18 +5,20 @@ import { increaseTimer }  from '../../redux/game/game.actions'
 
 import './timer.styles.scss'
 
-const Timer = ({ timeInSeconds }) => {
+const Timer = ({ timeInSeconds, increaseTimer }) => {
     const [counter,setCounter] = useState(timeInSeconds); 
     //const gameTimer = useRef(timeInSeconds)
     let minutes, seconds;
     minutes = Math.floor(counter / 60);
     seconds = Math.floor(counter - (minutes*60));
     useEffect(() => {
-        setTimeout(() => {setCounter(counter + 1 )}, 1000);
-            
+        setTimeout(() => {
+            setCounter(counter + 1 );
+            increaseTimer(counter);
+            console.log('seconds', counter)
+        }, 1000);
         
-        return () => {increaseTimer(counter)};
-    }, [counter])
+    }, [counter, increaseTimer])
 
     return(
         <div className='timer'>

@@ -149,7 +149,10 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
             const { puzzleSolution } = puzzles[diff];
             const { currentPuzzle  } = puzzles[diff];
             const isSolved = sudokuMatch(currentPuzzle, puzzleSolution)
-            //console.log('is solved? :' + isSolved );
+            
+            
+
+
             return {
                 ...state,
                 currentIsSolved: isSolved,

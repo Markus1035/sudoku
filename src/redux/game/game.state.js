@@ -18,6 +18,7 @@ const INITIAL_STATE= {
     currentDifficulty: 2,
     invalidNumberArray: [],
     scores: scores,
+    gameOn: true,
     puzzles: {
         0: {
             difficulty:0,
