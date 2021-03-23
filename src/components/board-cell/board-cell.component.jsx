@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import './board-cell.styles.scss';
 
-const BoardCell = ({number, cell, isSelected, pencilArrays, handleClick}) => {
+const BoardCell = ({number, cell, isSelected, pencilArrays, handleClick, invalid, original}) => {
     
     // const handleClick = numberSelected() => {
     //     selectCell(cell);
@@ -14,7 +14,7 @@ const BoardCell = ({number, cell, isSelected, pencilArrays, handleClick}) => {
     ;
     
     return(
-        <div className={`board-cell ${isSelected ? 'isSelected' : ''}`} onClick={() => {
+        <div className={`board-cell${isSelected ? ' isSelected' : ''}${invalid ? ' invalid' : ''}${original ? ' original' : ''}`} onClick={() => {
             //console.log(cell)
             handleClick(cell)}}>
             {number}

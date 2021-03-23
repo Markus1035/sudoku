@@ -6,20 +6,12 @@
 
 import React from 'react';
 import {connect} from 'react-redux'
+
 import {changeDifficulty} from '../../redux/game/game.actions';
 
-import './difficultySelector.styles.scss';
+import { difficultyMap } from '../../utils/sudoku.utils';
 
-const difficultyMap = (difficulty) => {
-    switch(difficulty){
-        case 1: return('Easier')
-        case 2: return ('Easy')
-        case 3: return ('Medium')
-        case 4: return ('Hard')
-        case 5: return ('Expert')
-        default: return('')
-    }
-}
+import './difficultySelector.styles.scss';
 
 const DifficultySelector = ({currentDifficulty, changeDifficulty}) => (
     <div className='difficulty-selector' >

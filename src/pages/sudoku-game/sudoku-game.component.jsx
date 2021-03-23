@@ -7,6 +7,7 @@ import SudokuGameOptions from '../../components/sudoku-game-options/sudoku-game-
 import SudokuBoard from '../../components/sudoku-board/sudoku-board.component';
 import Timer from '../../components/timer/timer.component';
 import BackButton from '../../components/back-button/back-button.component';
+import StartNewGame from '../../components/start-new-game/start-new-game.component';
 
 const SudokuGame = () => (
     <div className='sudoku-game'>
@@ -15,6 +16,7 @@ const SudokuGame = () => (
         <SudokuGameOptions />
         <SudokuBoard />
         <NumberSelector />
+        <StartNewGame />
     </div>
 )
 

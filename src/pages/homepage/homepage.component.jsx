@@ -19,10 +19,13 @@ import {newGame} from '../../redux/game/game.actions';
 import './homepage.styles.scss';
 import { scoreLogoStyles, aboutLogoStyles, playLogoStyles } from './homepage.styles'
 
-const HomePage = ({newGame, history}) => (
+const HomePage = ({newGame, gameOn, history}) => (
     <div className= 'homepage'>
         <PlayIcon style={playLogoStyles} onClick={() => {
-            newGame();
+            if(!gameOn){
+                newGame();
+            }
+            
             history.push('/sudokugame');
             }} />
         <DifficultySelector />
@@ -36,9 +39,10 @@ const mapDispatchToProps = dispatch => ({
     
 })
 
-// const mapStatetoProps = ({game}) => ({
-//     currentDifficulty: game.currentDifficulty,
-// })
+const mapStatetoProps = ({game}) => ({
+    //currentDifficulty: game.currentDifficulty,
+    gameOn: game.gameOn,
+})
 
-export default withRouter(connect(null,mapDispatchToProps)(HomePage));
+export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(HomePage));
 

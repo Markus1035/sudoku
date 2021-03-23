@@ -2,9 +2,9 @@ const scores = [];
 
 for (let i = 0; i < 10; i++){
     scores.push({
-        key: i,
         date: '---- -- -- --:--',
         time: 0,
+        timeString: '',
         difficulty: '',
     })
 }
@@ -18,7 +18,8 @@ const INITIAL_STATE= {
     currentDifficulty: 2,
     invalidNumberArray: [],
     scores: scores,
-    gameOn: true,
+    playerWon: false,
+    gameOn: false,
     puzzles: {
         0: {
             difficulty:0,

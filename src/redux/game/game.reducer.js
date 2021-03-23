@@ -1,4 +1,4 @@
-import { newSudokuPuzzle, sudokuMatch } from '../../utils/sudoku.utils';
+import { newSudokuPuzzle, sudokuMatch, createScoreObject } from '../../utils/sudoku.utils';
 
 import GameActionTypes from './game.types';
 
@@ -20,6 +20,8 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
                 pencilToggle: false,
                 currentIsSolved: false,
                 puzzles: newPuzzleArray,
+                playerWon: false, 
+                gameOn: true,
             };
         }
         case GameActionTypes.SOLVE_GAME:{
@@ -31,11 +33,13 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
             
             return {
                 ...state,
-                //currentIsSolved: true,
                 numberSelected: null, 
                 cellSelected: null,
                 invalidNumberArray: [],
-                puzzles
+                puzzles,
+                playerWon: false,
+                currentIsSolved: true,
+                gameOn: false,
             }
         }
 
@@ -62,6 +66,8 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
             return{
                 ...state,
                 currentIsSolved: false, 
+                playerWon: false,
+                gameOn: true,
                 puzzles: newPuzzleArray,
             }
         }
@@ -117,10 +123,8 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
                     }
                 }
             }
-            
             return{
                 ...state,
-                
             }
         }
         case GameActionTypes.UPDATE_PENCIL_ARRAYS: {
@@ -148,14 +152,33 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
             const diff = state.currentDifficulty;
             const { puzzleSolution } = puzzles[diff];
             const { currentPuzzle  } = puzzles[diff];
-            const isSolved = sudokuMatch(currentPuzzle, puzzleSolution)
-            
-            
+            const isSolved = sudokuMatch(currentPuzzle, puzzleSolution);
 
+            const scores = state.scores;
+            
+            const newTime = state.puzzles[diff].timeInSeconds;
+            const newScore = createScoreObject(newTime, diff);
+
+            const newScores = scores.concat([newScore]);
+
+            const sortedScores = newScores.sort((current, next) => {
+                if (current.time < next.time)
+                    return 1
+                if(current.time > next.time)
+                    return -1
+                return 0
+            })
+            console.log(sortedScores)
+            //const slicedScores = sortedScores.slice(0, 10);
+            
 
             return {
                 ...state,
                 currentIsSolved: isSolved,
+                playerWon: isSolved,
+                gameOn: !isSolved,
+                invalidNumberArray: [],
+                scores: sortedScores,
             }
         }
         default:
