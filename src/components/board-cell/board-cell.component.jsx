@@ -3,21 +3,20 @@ import { connect } from 'react-redux'
 
 import './board-cell.styles.scss';
 
-const BoardCell = ({number, cell, isSelected, pencilArrays, handleClick, invalid, original}) => {
-    
-    // const handleClick = numberSelected() => {
-    //     selectCell(cell);
-    //                     if(numberSelected){
-    //                     updateCell(cell, numberSelected)
-    //                     }
-    // }
-    ;
+const BoardCell = ({number, cell, isSelected, pencilArray, handleClick, invalid, original}) => {
     
     return(
         <div className={`board-cell${isSelected ? ' isSelected' : ''}${invalid ? ' invalid' : ''}${original ? ' original' : ''}`} onClick={() => {
             //console.log(cell)
             handleClick(cell)}}>
             {number}
+            {(!number && pencilArray)
+            ? 
+            <div className='pencil-matrix'>
+                {pencilArray.map(pencil => <span>{pencil}</span>)}
+            </div> 
+            : 
+            null}
         </div>
     )
 }

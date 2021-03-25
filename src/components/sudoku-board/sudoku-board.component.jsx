@@ -9,7 +9,7 @@ import BoardCell from '../board-cell/board-cell.component';
 import './sudoku-board.styles.scss';
 
 const SudokuBoard = ({puzzle, cellSelected, numberSelected, selectCell, updateCell, checkSolution, invalidNumberArray}) => {
-    const { timeInSeconds, currentPuzzle, originalPuzzle } = puzzle;
+    const { timeInSeconds, currentPuzzle, originalPuzzle, pencilArrays } = puzzle;
     
     useEffect(() => {
         // console.log(timeInSeconds);
@@ -32,11 +32,12 @@ const SudokuBoard = ({puzzle, cellSelected, numberSelected, selectCell, updateCe
                 <BoardCell 
                     key={`cell-N${cell}`}
                     cell={cell} 
-                    number={number}
+                    number={(number === 0) ? 9 : number}
                     isSelected={(cell === cellSelected) ? true : false}
                     handleClick={cell => handleClick(cell)}
                     invalid={(invalidNumberArray.includes(cell)) ? true : false}
-                    original={originalPuzzle[cell] ? true : false}
+                    original={(originalPuzzle[cell] !== null) ? true : false}
+                    pencilArray={pencilArrays[cell]}
                 />
             ))}
         </div>

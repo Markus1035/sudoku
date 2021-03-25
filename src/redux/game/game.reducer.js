@@ -17,7 +17,7 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
                 invalidNumberArray: [],
                 numberSelected: null, 
                 cellSelected: null,
-                pencilToggle: false,
+                pencilIsOn: false,
                 currentIsSolved: false,
                 puzzles: newPuzzleArray,
                 playerWon: false, 
@@ -104,16 +104,27 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
             const {currentPuzzle} = puzzles[diff];
             const {pencilArrays} =  puzzles[diff];
             //console.log(currentPuzzle)
-            const {number, cell} = action.payload;
+            let {number, cell} = action.payload;
+            
+            number = (number === 9) ? 0 : number;
 
-            if(!originalPuzzle[cell]) {
+            if(originalPuzzle[cell] === null) {
                 if(state.pencilIsOn){
-                    if(pencilArrays[cell].includes(number)) return {...state};
+                    number = (number === 0) ? 9 : number;
+                    if(!pencilArrays[cell] ){
+                        pencilArrays[cell] = [];
+                        
+                    } 
+                    if(pencilArrays[cell].includes(number)) {
+                        return {...state}
+                    }                    
                     pencilArrays[cell].push(number);
+                    pencilArrays[cell].sort();
                     return {
                         ...state,
+                        puzzles,
                     }
-                } else {    
+                } else {   
                     currentPuzzle[cell] = number;
                     return {
                         ...state,
