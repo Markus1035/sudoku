@@ -1,15 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { selectNumber, updateCell } from '../../redux/game/game.actions';
+import { selectNumber, updateCell, clearCell } from '../../redux/game/game.actions';
 
 import './number-selector.styles.scss'
 
-const NumberSelector = ({selectNumber, updateCell, numberSelected, editOnNext, cellSelected}) => {
+const NumberSelector = ({selectNumber, updateCell, clearCell, numberSelected, editOnNext, cellSelected}) => {
     const handleClick = (number) => {
         selectNumber(number);
         if(editOnNext){
-            setTimeout(() => updateCell(cellSelected, number), 200)
+            if(number === 0 ){
+                setTimeout(() => clearCell(cellSelected), 200)
+            } else {
+                setTimeout(() => updateCell(cellSelected, number), 200)
+            }
+            
         }         
     } 
     return(
@@ -29,7 +34,8 @@ const NumberSelector = ({selectNumber, updateCell, numberSelected, editOnNext, c
 
 const mapDispatchToProps = dispatch => ({
     selectNumber: (number) => dispatch(selectNumber(number)),
-    updateCell: (cell, number) => dispatch(updateCell(cell, number))
+    updateCell: (cell, number) => dispatch(updateCell(cell, number)),
+    clearCell: (cell) => dispatch(clearCell(cell)), 
 })
 
 const mapStatetoProps = ({ game }) => {

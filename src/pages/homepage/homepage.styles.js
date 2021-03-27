@@ -21,5 +21,5 @@ export const playLogoStyles = {
     height: '120px',
     width: '120px',
     gridArea: 'play',
-    margin: 'auto'
+    margin: 'auto',
 }

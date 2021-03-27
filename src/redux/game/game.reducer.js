@@ -72,11 +72,36 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
             }
         }
         case GameActionTypes.CHANGE_DIFFICULTY:{
+            const puzzles =  JSON.parse(JSON.stringify(state.puzzles));
+            const diff = state.currentDifficulty;
+
+            let gameOn;
+
+            if(state.currentIsSolved){
+                puzzles[diff] = {
+                    difficulty:diff,
+                    currentPuzzle: [],
+                    originalPuzzle: [],
+                    puzzleSolution: [],
+                    pencilArrays: {},
+                    timeInSeconds: 0,
+                } 
+                gameOn = false;
+            } else if (puzzles[action.payload].timeInSeconds === 0) {
+                gameOn = false;
+            } else {
+                gameOn = true;
+            }
+
             return {
                 ...state,
                 currentDifficulty: action.payload,
+                gameOn,
+                puzzles,
             }
         }
+
+
         case GameActionTypes.SELECT_NUMBER:{
             return {
                 ...state,
@@ -138,14 +163,6 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
                 ...state,
             }
         }
-        case GameActionTypes.UPDATE_PENCIL_ARRAYS: {
-            
-            
-            return{
-                ...state,
-
-            }
-        }
 
         case GameActionTypes.INCREASE_TIMER: {
             const puzzles =  JSON.parse(JSON.stringify(state.puzzles));
@@ -192,9 +209,64 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
                 scores: sortedScores,
             }
         }
+        case GameActionTypes.CLEAR_GAME: {
+            const puzzles =  JSON.parse(JSON.stringify(state.puzzles));
+            const diff = state.currentDifficulty;
+            puzzles[diff] = {
+                difficulty:diff,
+                currentPuzzle: [],
+                originalPuzzle: [],
+                puzzleSolution: [],
+                pencilArrays: {},
+                timeInSeconds: 0,
+            }
+            return{
+                ...state,
+                puzzles,
+                playerWon: false,
+                gameOn: false,
+                numberSelected: null, 
+                editOnNext: false,
+                cellSelected: null,
+                pencilIsOn: false,
+                currentIsSolved: false,
+                currentDifficulty: 2,
+                invalidNumberArray: [],
+            }
+        }
+        case GameActionTypes.CLEAR_CELL: {
+            const puzzles =  JSON.parse(JSON.stringify(state.puzzles));
+            const diff = state.currentDifficulty;
+
+            const {originalPuzzle} = puzzles[diff];
+            const {currentPuzzle} = puzzles[diff];
+            const {pencilArrays} =  puzzles[diff];
+            
+            let cell = action.payload;
+
+            if(originalPuzzle[cell] === null) {
+                if(pencilArrays[cell]) {
+                    delete pencilArrays[cell];
+                }
+                    
+                
+                currentPuzzle[cell] = null;
+
+                return {
+                    ...state,
+                    puzzles,
+                }
+            }
+
+            return{
+                ...state,
+            }
+        }
         default:
             return state;
     }
+    
+
 }  
 
 export default gameReducer;

@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { selectCell, updateCell, checkSolution } from '../../redux/game/game.actions'
+import { selectCell, updateCell, checkSolution, clearCell } from '../../redux/game/game.actions'
 
 import BoardCell from '../board-cell/board-cell.component';
 
 
 import './sudoku-board.styles.scss';
 
-const SudokuBoard = ({puzzle, cellSelected, numberSelected, selectCell, updateCell, checkSolution, invalidNumberArray}) => {
+const SudokuBoard = ({puzzle, cellSelected, numberSelected, selectCell, updateCell, checkSolution, clearCell, invalidNumberArray}) => {
     const { timeInSeconds, currentPuzzle, originalPuzzle, pencilArrays } = puzzle;
     
     useEffect(() => {
@@ -20,6 +20,9 @@ const SudokuBoard = ({puzzle, cellSelected, numberSelected, selectCell, updateCe
 
         if(numberSelected){
             updateCell(cell, numberSelected)
+        }
+        if(numberSelected === 0){
+            clearCell(cell);
         }
         if(!currentPuzzle.includes(null)){
             checkSolution();
@@ -60,6 +63,7 @@ const mapDispatchToProps = dispatch => ({
     selectCell: cell => dispatch(selectCell(cell)),
     updateCell: (cell, number) => dispatch(updateCell(cell, number)),
     checkSolution: () => dispatch(checkSolution()),
+    clearCell: cell => dispatch(clearCell(cell)),
 })
 
 export default connect(mapStatetoProps,mapDispatchToProps)(SudokuBoard);

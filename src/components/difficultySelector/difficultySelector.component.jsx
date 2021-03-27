@@ -16,11 +16,11 @@ import './difficultySelector.styles.scss';
 const DifficultySelector = ({currentDifficulty, changeDifficulty}) => (
     <div className='difficulty-selector' >
         <button onClick={() => {
-            if(currentDifficulty > 1) {changeDifficulty(currentDifficulty - 1)}
+            if(currentDifficulty > 0) {changeDifficulty(currentDifficulty - 1)}
         }} >{'\u003C'}</button>
         <h1 >{difficultyMap(currentDifficulty)}</h1>
         <button onClick={() => {
-            if(currentDifficulty < 5) {changeDifficulty(currentDifficulty + 1)}
+            if(currentDifficulty < 4) {changeDifficulty(currentDifficulty + 1)}
         }} >{'\u003E'}</button>
     </div>
 )

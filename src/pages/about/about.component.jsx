@@ -1,28 +1,39 @@
 import React from 'react';
 
+import { ReactComponent as ReactLogo } from '../../assets/reactjs-icon.svg';
+import { ReactComponent as AppEngineLogo } from '../../assets/google_appengine-icon.svg';
+import { ReactComponent as ReduxLogo } from '../../assets/redux-logo.svg';
+import { ReactComponent as ExpressLogo } from '../../assets/expressjs-icon.svg';
+
 import BackButton from '../../components/back-button/back-button.component';
+
+
 
 import './about.styles.scss'
 
 const About = () => (
     <div className='about'>
-        <BackButton />
+        <BackButton className="back-button" />
         <h2>About</h2>
-        <h3>Created by Marcel Anaya</h3>
-        <h3>marcel.anaya.89@gmail.com</h3>
-        <h3>UI Design by Diana Muñoz</h3>        
-        <h3>marsimone22@gmail.com</h3>
-        <h3>Applied Technilogies:</h3>
-        <ul>
-            <li key='1'>ReactJS</li>
-            <li key='2'>Redux</li>
-            <li key='3'>Express</li>
-            <li key='4'>Sass</li>
-            <li key='5'>Google Cloud App Engine</li>
-        </ul>
-        <p>This is a simple Sudoku game designed for a portfolio</p>
-        
+        <div className="contact">
+            <h3>Developer: Marcel Anaya</h3>
+            <a href="mailto:marcel.anaya.89@gmail.com">marcel.anaya.89@gmail.com</a>
+            <br></br>
+            <a href="https://github.com/Markus1035/sudoku">Git Repository</a>
+        </div>
+        <h3>Technilogies Applied:</h3>
+        <div className="tech">
+            <ReactLogo className="logo"/><span key='1' className="tech-item">ReactJS</span>
+            <ReduxLogo className="logo" /><span key='2' className="tech-item">Redux</span>
+            <ExpressLogo className="logo" /><span key='3' className="tech-item">Express</span>
+            <AppEngineLogo className="logo"/><span key='4' className="tech-item">Google Cloud App Engine</span>
+       
+        </div>
+       
     </div>
 );
+
+//         <h3>UI Design by Diana Muñoz</h3>        
+//         <h3>marsimone22@gmail.com</h3>
 
 export default About;

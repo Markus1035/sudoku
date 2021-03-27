@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-import {newGame} from '../../redux/game/game.actions';
+import { newGame, clearGame } from '../../redux/game/game.actions';
 
 import './start-new-game.styles.scss';
 
-const StartNewGame = ({newGame, playerWon, currentIsSolved}) => {
+const StartNewGame = ({newGame, clearGame, playerWon, currentIsSolved, history}) => {
     const handleClick = () => {
         newGame();
     }
@@ -14,7 +14,13 @@ const StartNewGame = ({newGame, playerWon, currentIsSolved}) => {
         <div className='start-new-game'>
             {currentIsSolved 
             ? 
+            <>
             <span onClick={() => handleClick()}>Start New Game</span> 
+            <span onClick={() => {
+                history.push('/');
+                clearGame();
+                }} >Back to Home screen</span>
+            </>
             : 
             null}
             {playerWon
@@ -36,8 +42,9 @@ const mapStatetoProps = ({game}) => {
 
 const mapDispatchToProps = dispatch => ({
     newGame: () => dispatch(newGame()),
+    clearGame: () => dispatch(clearGame()),
 })
 
 
 
-export default connect(mapStatetoProps, mapDispatchToProps)(StartNewGame);
+export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(StartNewGame));

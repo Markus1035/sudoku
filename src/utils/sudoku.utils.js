@@ -44,11 +44,11 @@ export const sudokuMatch = (current, solution) => {
 
 export const difficultyMap = (difficulty) => {
     switch(difficulty){
-        case 1: return('Easier')
-        case 2: return ('Easy')
-        case 3: return ('Medium')
-        case 4: return ('Hard')
-        case 5: return ('Expert')
+        case 0: return('Easier')
+        case 1: return ('Easy')
+        case 2: return ('Medium')
+        case 3: return ('Hard')
+        case 4: return ('Expert')
         default: return('')
     }
 }

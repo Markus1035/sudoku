@@ -56,9 +56,6 @@ export const increaseTimer = time => ({
     payload: time,
 })
 
-// export const hintRequest = () => ({
-//     action: GameActionTypes.HINT_REQUEST,
-// })
 
 export const addScore = score => ({
     type: GameActionTypes.ADD_SCORE, 
@@ -71,4 +68,13 @@ export const resetScores = () => ({
 
 export const checkSolution = () => ({
     type: GameActionTypes.CHECK_SOLUTION,
+})
+
+export const clearCell = cell => ({
+    type: GameActionTypes.CLEAR_CELL,
+    payload: cell,
+})
+
+export const clearGame = () => ({
+    type: GameActionTypes.CLEAR_GAME,
 })

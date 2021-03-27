@@ -1,3 +1,34 @@
 .about {
+    padding: 2.5em;
+    background-color: #5AABD6;
+    color: #505215;
     margin: auto;
+    height: 100%;
+
+    .back-button{
+        display: block;
+        float: left;
+    }
+
+    .tech {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto auto auto;
+        font-size: 1.1em;
+        .tech-item{
+            text-align: left;
+        }
+        .logo{
+            width: 1.5em;
+            height: 1.5em;
+        }
+    }
+    a{
+        color: #E5Bd64;
+    }
+    a:hover{
+        color: #B76B14;
+    }
+
 }
+
