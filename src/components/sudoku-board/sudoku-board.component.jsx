@@ -8,7 +8,7 @@ import BoardCell from '../board-cell/board-cell.component';
 
 import './sudoku-board.styles.scss';
 
-const SudokuBoard = ({puzzle, cellSelected, numberSelected, selectCell, updateCell, checkSolution, clearCell, invalidNumberArray}) => {
+const SudokuBoard = ({puzzle, cellSelected, numberSelected, selectCell, updateCell, checkSolution, clearCell, invalidNumberArray, gameOn}) => {
     const { timeInSeconds, currentPuzzle, originalPuzzle, pencilArrays } = puzzle;
     
     useEffect(() => {
@@ -16,6 +16,7 @@ const SudokuBoard = ({puzzle, cellSelected, numberSelected, selectCell, updateCe
     }, [timeInSeconds] );
 
     const handleClick = cell => {
+        if(!gameOn) return;
         selectCell(cell);
 
         if(numberSelected){
@@ -49,13 +50,14 @@ const SudokuBoard = ({puzzle, cellSelected, numberSelected, selectCell, updateCe
 
 
 const mapStatetoProps = ({game}) => {
-    const {puzzles, currentDifficulty, cellSelected, numberSelected,invalidNumberArray} = game;
+    const {puzzles, currentDifficulty, cellSelected, numberSelected,invalidNumberArray, gameOn} = game;
     return {
         puzzle: puzzles[currentDifficulty],
         cellSelected,
         numberSelected,
         currentDifficulty,
         invalidNumberArray,
+        gameOn,
     }
 }
 

@@ -9,7 +9,7 @@ const BoardCell = ({number, cell, isSelected, pencilArray, handleClick, invalid,
         <div className={`board-cell${isSelected ? ' isSelected' : ''}${invalid ? ' invalid' : ''}${original ? ' original' : ''}`} onClick={() => {
             //console.log(cell)
             handleClick(cell)}}>
-            {number}
+            <div>{number}</div>
             {(!number && pencilArray)
             ? 
             <div className='pencil-matrix'>

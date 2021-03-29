@@ -11,7 +11,7 @@ import StartNewGame from '../../components/start-new-game/start-new-game.compone
 
 const SudokuGame = () => (
     <div className='sudoku-game'>
-        <BackButton />
+        <BackButton className="back-button" />
         <Timer />
         <SudokuGameOptions />
         <SudokuBoard />
