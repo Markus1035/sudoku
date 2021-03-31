@@ -1,8 +1,22 @@
 .scores{
-    //background-color: var(--main-bg-color);
-    //color: var(--secondary-color);
     font-size: 18px;
     height: 100%;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 50px;
+
+    .back-button {
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .title, .score-item {
+        padding: 10px 10px;
+        display: grid;
+        grid-template-columns: 10% 55% 25% 10%;
+    }
+
 }
+

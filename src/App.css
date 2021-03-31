@@ -2,20 +2,21 @@ body {
   background-image: linear-gradient(#B3DAF1, #EB8947, #5F5426);
   overflow: hidden;
   margin: auto;
-  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   user-select: none;
   --main-bg-color: #6F1A07;
   --secondary-color: #A8763E;
   --terciary-color: #2B2118;
-  --fourth-color: #F7F3E3;
-  
+  --fourth-color: #F7F3E3;  
 } 
+
+
 
 .app {
   text-align: center;
-  height: 100vh;
-
-  
+  height: 100vh;  
 }
 
 .leaf{

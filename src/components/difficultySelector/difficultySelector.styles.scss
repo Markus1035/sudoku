@@ -1,16 +1,19 @@
 .difficulty-selector {
     display:flex;
     flex-direction: row;
-    justify-content: center ;
+    justify-content: space-between ;
     align-items: center;
-    grid-area: diff;
+    width: 45%;
 
     h1 {
-        padding: 0.5em;
-        width: 70%;
-        height: 20%;
+        padding: 10%;
+        place-content: center;
     }
-
+    button {
+        font-size: 2em;
+        background-color: transparent;
+        border: none;
+    }
     
     
 }

@@ -9,9 +9,10 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
     switch(action.type){
         case GameActionTypes.NEW_GAME: {
             let newPuzzle = newSudokuPuzzle(state.currentDifficulty);
-            let newPuzzleArray = state.puzzles;
+            let newPuzzleArray = JSON.parse(JSON.stringify(state.puzzles));
             newPuzzleArray[state.currentDifficulty] = newPuzzle;
-
+            newPuzzleArray[state.currentDifficulty].timeInSeconds = 0;
+            console.log(newPuzzleArray);
             return {
                 ...state,
                 invalidNumberArray: [],

@@ -29,7 +29,16 @@ const About = () => (
             <AppEngineLogo className="logo"/><span key='4' className="tech-item">Google Cloud App Engine</span>
        
         </div>
-        <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <div class="external-credit">
+            <span> Leaf Vector Graphics made by </span>
+            <a href="https://www.freepik.com" title="Freepik">
+                Freepik
+            </a> 
+            <span>from</span>
+            <a href="https://www.flaticon.com/" title="Flaticon">
+                www.flaticon.com
+            </a>
+        </div>
 
     </div>
 );

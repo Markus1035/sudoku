@@ -1,9 +1,7 @@
 .board-cell {
-    width: 24px;
-    height: 24px;
-    padding: 0 10%;
+    border: 1px solid #000000;
     div{
-       padding: 0 0; 
+       padding: 25% 0; 
        font-size: 1.5em;
     }
     .pencil-matrix{
@@ -17,14 +15,42 @@
 
     
 }
+
+@media only screen  and (min-device-width: 640px) {
+    .board-cell{
+        width: 64px;
+        height: 64px;
+        font-size: large;
+    }
+  }
+@media only screen  and (min-device-width: 320px) and (max-device-width: 480px) {
+    .board-cell{
+        width: 32px;
+        height: 32px;
+        font-size: smaller;
+    }
+  }
+
 .invalid {
-    color: red;
+    color: rgb(245, 58, 58);
+    font-weight: bold;
 }
 
 .original{
-    color: var(--secondary-color);
+    color: #2faa5e;
+    font-weight: bold;
 }
 
 .isSelected {
-    background-color: blue;
+    div {
+        background-color: rgb(65, 170, 255);
+        border-radius: 25px;
+        margin: auto 0;
+        height: 95%;
+        width: 95%;
+        color: #FFFFFF;
+        font-weight: bold;
+    }
+    
+
 }

@@ -7,7 +7,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { ReactComponent as PlayIcon } from '../../assets/play-icon.svg';
+//import { ReactComponent as PlayIcon } from '../../assets/play-icon.svg';
 import { ReactComponent as AboutIcon } from '../../assets/about-icon.svg';
 import { ReactComponent as ScoreIcon } from '../../assets/score-icon.svg';
 
@@ -17,20 +17,23 @@ import DifficultySelector from '../../components/difficultySelector/difficultySe
 import {newGame} from '../../redux/game/game.actions';
 
 import './homepage.styles.scss';
-import { scoreLogoStyles, aboutLogoStyles, playLogoStyles } from './homepage.styles'
+import { scoreLogoStyles, aboutLogoStyles } from './homepage.styles'
 
 const HomePage = ({newGame, gameOn, history}) => (
     <div className= 'homepage'>
-        <PlayIcon style={playLogoStyles} onClick={() => {
+        <div className='play-button' onClick={() => {
             if(!gameOn){
                 newGame();
             }
             
             history.push('/sudokugame');
-            }} />
+            }} >
+            Start</div>
         <DifficultySelector />
-        <ScoreIcon style={scoreLogoStyles} onClick={() => history.push('/scores')}  />
-        <AboutIcon style={aboutLogoStyles} onClick={() => history.push('/about')} />
+        <div className='homepage-options'>
+           <ScoreIcon style={scoreLogoStyles} onClick={() => history.push('/scores')}  />
+           <AboutIcon style={aboutLogoStyles} onClick={() => history.push('/about')} />
+        </div>
     </div>
 );
 

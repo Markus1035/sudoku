@@ -3,16 +3,37 @@
     //color: var(--secondary-color);
     font-size: 18px;
     height: 100%;
-    display: grid;
-    padding: 50px;
-    grid-template-areas: 
-        "play play . ."
-        "play play user user"
-        "diff diff diff diff"
-        ". score . about";
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    
+    .homepage-options{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 50%;
+    }
+    .play-button {
+        margin: 10% 0;
+        border: 1px solid transparent;
+        outline: none;
+        cursor: pointer;
+        background: radial-gradient(circle at top right,#70b8c0 , #1A8693 35%); 
+        opacity: 0.95;
+        color: #EEEEEE;
+        border-radius: 20px;
+        width: 50%;
+        text-transform: uppercase;
+        
+    }
+
+    .play-button:hover {
+        background: radial-gradient(circle at top right,#6492b1 , #1a6393 35%); 
+        font-size: larger;
+    }
     
     
-
-
-
+        
 }

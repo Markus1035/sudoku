@@ -15,7 +15,7 @@ const Scores = ({ scores }) => (
             <span>Difficulty</span>            
         </div>
         {scores.map((score, index) => (
-            <div key={index}>
+            <div key={index} class="score-item">
                 <span>{index + 1}</span>
                 <span>{score.date}</span>
                 <span>{score.time}</span>

@@ -16,6 +16,7 @@ const SudokuBoard = ({puzzle, cellSelected, numberSelected, selectCell, updateCe
     }, [timeInSeconds] );
 
     const handleClick = cell => {
+        console.log('clicked!')
         if(!gameOn) return;
         selectCell(cell);
 
