@@ -63,6 +63,7 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
             let { originalPuzzle } =state.puzzles[state.currentDifficulty];
             let newPuzzleArray = JSON.parse(JSON.stringify(state.puzzles));
             newPuzzleArray[state.currentDifficulty].currentPuzzle = originalPuzzle;
+            newPuzzleArray[state.currentDifficulty].pencilArrays = {};
 
             return{
                 ...state,
@@ -142,13 +143,15 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
                         
                     } 
                     if(pencilArrays[cell].includes(number)) {
-                        return {...state}
+                        return {...state, editOnNext: false, numberSelected: null}
                     }                    
                     pencilArrays[cell].push(number);
                     pencilArrays[cell].sort();
                     return {
                         ...state,
                         puzzles,
+                        editOnNext: false,
+                        numberSelected: null,
                     }
                 } else {   
                     currentPuzzle[cell] = number;
@@ -157,11 +160,14 @@ const gameReducer = (state = INITIAL_STATE, action) =>{
                         puzzles,
                         numberSelected: null,
                         editOnNext: false,
+                        cellSelected: null
                     }
                 }
             }
             return{
                 ...state,
+                editOnNext: false,
+                numberSelected: null
             }
         }
 

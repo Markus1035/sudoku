@@ -6,17 +6,15 @@ import './board-cell.styles.scss';
 const BoardCell = ({number, cell, isSelected, pencilArray, handleClick, invalid, original}) => {
     
     return(
-        <div className={`board-cell${isSelected ? ' isSelected' : ''}${invalid ? ' invalid' : ''}${original ? ' original' : ''}`} onClick={() => {
-            //console.log(cell)
-            handleClick(cell)}}>
-            <div>{number}</div>
-            {(!number && pencilArray)
-            ? 
-            <div className='pencil-matrix'>
-                {pencilArray.map(pencil => <span>{pencil}</span>)}
-            </div> 
-            : 
-            null}
+        <div className={`board-cell${isSelected ? ' isSelected' : ''}${invalid ? ' invalid' : ''}${original ? ' original' : ''}`} 
+             onClick={() => {handleClick(cell)}}>
+            <div className={`${number ? "number" : (!number && pencilArray) ? "pencil-matrix" : "" }`} >
+            {number ? number
+            : (!number && pencilArray) ? pencilArray.map(pencil => <span>{pencil}</span>)
+            : null
+             }
+             
+            </div>
         </div>
     )
 }
